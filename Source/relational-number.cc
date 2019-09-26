@@ -5,6 +5,7 @@
 
 RelationalNumber::RelationalNumber(int num, int den):num_(num),den_(den){
   if(den_ == 0)
+    //Envía una señal de error
     throw std::domain_error("Zero Denominator");
 }
 
@@ -14,13 +15,13 @@ std::istream& operator>>(std::istream& is, RelationalNumber& number){
  
   std::string raw_relational_number;
   is >> raw_relational_number;
+  //Recibe el string que almacena el racional
+  //Encuentra el separador "/" e introduce
+  //los valores correspondientes a den_ y num_
   size_t mid = raw_relational_number.find("/"); 
   
-  std::string num = raw_relational_number.substr(0,mid);
-  std::string den = raw_relational_number.substr(mid,raw_relational_number.size());
-  
-  number.numerador() = std::stoi(num);
-  number.denominador() = std::stoi(den);
+  number.numerador() = std::stoi(raw_relational_number.substr(0,mid));
+  number.denominador() = std::stoi(raw_relational_number.substr(mid+1));
 
   return is;
 }

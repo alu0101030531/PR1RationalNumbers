@@ -3,10 +3,18 @@
 
 #include <iostream>
 
+//Permite representar números racionales
+//Ejemplo:
+//  RelationalNumber number1(5,2);
+//  RelationalNumber number2(3);
+//  RelationalNumber number3;
+//  number3 = number2 / number1;
 class RelationalNumber {
 
   private:    
+    //numerador
     int num_;
+    //denominador
     int den_;
 
   public:
